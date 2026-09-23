@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Hotel - Welcome</title>
+    <title>SkyWings - Flight Booking</title>
     <style>
         * {
             margin: 0;
@@ -12,159 +12,310 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         header {
-            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            text-align: center;
             color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            margin-bottom: 40px;
         }
 
-        nav {
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .booking-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-field label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        .input-field input,
+        .input-field select {
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .input-field input:focus,
+        .input-field select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            align-self: flex-end;
+            margin-top: 10px;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .flights-section {
+            display: grid;
+            gap: 20px;
+        }
+
+        .flight-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+            transition: transform 0.2s;
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #ffc107;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                        url('https://via.placeholder.com/1920x600') center/cover;
-            height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            padding: 0.8rem 2rem;
-            background: #ffc107;
-            color: #333;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background: #ffb300;
-        }
-
-        .features {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: #f4f4f4;
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
+        .flight-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
-        .feature-card h3 {
-            margin: 1rem 0;
-            color: #ffc107;
+        .flight-info {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            align-items: center;
         }
 
-        footer {
-            background: #1a1a1a;
-            color: white;
+        .flight-detail {
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+        }
+
+        .airline {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        .time {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .airport {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .duration {
+            color: #999;
+            font-size: 0.95em;
+        }
+
+        .price {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #764ba2;
+            text-align: right;
+            margin-right: 20px;
+        }
+
+        .book-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .book-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .no-flights {
+            text-align: center;
+            color: white;
+            font-size: 1.2em;
+            padding: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .flight-info {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .flight-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .price {
+                text-align: center;
+                margin-right: 0;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">🏨 Luxury Hotel</div>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Rooms</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="container">
+        <header>
+            <h1>✈️ SkyWings</h1>
+            <p>Book Your Flight in Seconds</p>
+        </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Welcome to Luxury Hotel</h1>
-            <p>Experience Comfort and Elegance</p>
-            <a href="#" class="btn">Book Now</a>
+        <div class="booking-section">
+            <div class="form-group">
+                <div class="input-field">
+                    <label for="from">From</label>
+                    <input type="text" id="from" placeholder="Departure City" value="New York">
+                </div>
+                <div class="input-field">
+                    <label for="to">To</label>
+                    <input type="text" id="to" placeholder="Destination City" value="London">
+                </div>
+                <div class="input-field">
+                    <label for="depart">Departure Date</label>
+                    <input type="date" id="depart">
+                </div>
+                <div class="input-field">
+                    <label for="return">Return Date</label>
+                    <input type="date" id="return">
+                </div>
+                <div class="input-field">
+                    <label for="passengers">Passengers</label>
+                    <select id="passengers">
+                        <option>1 Passenger</option>
+                        <option>2 Passengers</option>
+                        <option>3 Passengers</option>
+                        <option>4+ Passengers</option>
+                    </select>
+                </div>
+            </div>
+            <button class="search-btn">Search Flights</button>
         </div>
-    </section>
 
-    <section class="features">
-        <div class="feature-card">
-            <h3>🛏️ Comfortable Rooms</h3>
-            <p>Spacious and elegantly designed rooms with modern amenities for your comfort.</p>
-        </div>
-        <div class="feature-card">
-            <h3>🍽️ Fine Dining</h3>
-            <p>Enjoy world-class cuisine prepared by our expert chefs in our premium restaurants.</p>
-        </div>
-        <div class="feature-card">
-            <h3>🏊 Spa & Wellness</h3>
-            <p>Relax and rejuvenate with our comprehensive spa and wellness facilities.</p>
-        </div>
-    </section>
+        <div class="flights-section">
+            <div class="flight-card">
+                <div class="flight-info">
+                    <div class="flight-detail">
+                        <div class="airline">United Airlines</div>
+                        <div class="time">10:30 AM</div>
+                        <div class="airport">JFK</div>
+                    </div>
+                    <div class="flight-detail">
+                        <div class="duration">7h 45m</div>
+                        <div style="margin: 10px 0;">━━━━━━━━━</div>
+                        <div class="duration">Non-stop</div>
+                    </div>
+                    <div class="flight-detail">
+                        <div class="airline">United Airlines</div>
+                        <div class="time">06:15 PM</div>
+                        <div class="airport">LHR</div>
+                    </div>
+                </div>
+                <div class="price">$542</div>
+                <button class="book-btn">Book Now</button>
+            </div>
 
-    <footer>
-        <p>&copy; 2024 Luxury Hotel. All rights reserved.</p>
-    </footer>
+            <div class="flight-card">
+                <div class="flight-info">
+                    <div class="flight-detail">
+                        <div class="airline">British Airways</div>
+                        <div class="time">02:00 PM</div>
+                        <div class="airport">JFK</div>
+                    </div>
+                    <div class="flight-detail">
+                        <div class="duration">8h 10m</div>
+                        <div style="margin: 10px 0;">━━━━━━━━━</div>
+                        <div class="duration">Non-stop</div>
+                    </div>
+                    <div class="flight-detail">
+                        <div class="airline">British Airways</div>
+                        <div class="time">02:10 AM</div>
+                        <div class="airport">LHR</div>
+                    </div>
+                </div>
+                <div class="price">$680</div>
+                <button class="book-btn">Book Now</button>
+            </div>
+
+            <div class="flight-card">
+                <div class="flight-info">
+                    <div class="flight-detail">
+                        <div class="airline">Air France</div>
+                        <div class="time">08:00 AM</div>
+                        <div class="airport">JFK</div>
+                    </div>
+                    <div class="flight-detail">
+                        <div class="duration">9h 20m</div>
+                        <div style="margin: 10px 0;">━━━━━━━━━</div>
+                        <div class="duration">1 Stop</div>
+                    </div>
+                    <div class="flight-detail">
+                        <div class="airline">Air France</div>
+                        <div class="time">05:20 PM</div>
+                        <div class="airport">LHR</div>
+                    </div>
+                </div>
+                <div class="price">$458</div>
+                <button class="book-btn">Book Now</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
