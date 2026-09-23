@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       # Step 1: Checkout GitHub repository
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -23,10 +24,9 @@ jobs:
           aws-region: us-east-1
 
       # Step 3: Deploy website to S3
-      # add the bucket name in the command below
       - name: Deploy Website to S3
         run: |
-          aws s3 sync . s3://anup23sept2026 \ 
+          aws s3 sync . s3://anup23sept2026 \
             --delete \
             --exclude ".git/*" \
             --exclude ".github/*"
